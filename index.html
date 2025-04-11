@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatisticalMaster | Advanced Statistical Analysis Tool</title>
+    <!-- Mantengo Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Mantengo Font Awesome via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Referencia al CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatisticalMaster | Advanced Statistical Analysis Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: scale(1.03);
+        }
+        .graph-placeholder {
+            background: linear-gradient(45deg, #f3f4f6 25%, #e5e7eb 25%, #e5e7eb 50%, #f3f4f6 50%, #f3f4f6 75%, #e5e7eb 75%, #e5e7eb 100%);
+            background-size: 20px 20px;
+        }
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-chart-line text-3xl mr-3"></i>
+                    <h1 class="text-3xl font-bold">StatisticalMaster</h1>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#features" class="hover:text-indigo-200 transition">Features</a></li>
+                        <li><a href="#examples" class="hover:text-indigo-200 transition">Examples</a></li>
+                        <li><a href="#documentation" class="hover:text-indigo-200 transition">Docs</a></li>
+                        <li><a href="#download" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-50 transition">Download</a></li>
+                    </ul>
+                </nav>
+                <button class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="mt-20 md:mt-32 text-center md:text-left md:flex items-center">
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Advanced Statistical Analysis Made Simple</h2>
+                    <p class="text-xl text-indigo-100 mb-8">Comprehensive statistical toolkit with automated analysis, advanced modeling, and beautiful visualizations - all in Python.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+                        <a href="#download" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-indigo-50 transition text-center">Get Started</a>
+                        <a href="#features" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition text-center">Explore Features</a>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-1/2 mt-10 md:mt-0">
+                    <div class="bg-white rounded-xl p-4 shadow-2xl ml-8">
+                        <div class="bg-gray-100 rounded-lg overflow-hidden">
+                            <div class="p-4 bg-gray-800 text-white flex items-center">
+                                <div class="flex space-x-2 mr-4">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <span class="text-sm font-mono">statistical_master.py</span>
+                            </div>
+                            <div class="p-4 font-mono text-sm">
+                                <p class="text-gray-500"># Load your dataset</p>
+                                <p class="text-purple-600">import</p> <span class="text-gray-800">statistical_master</span> <span class="text-purple-600">as</span> <span class="text-gray-800">sm</span>
+                                <br>
+                                <p class="text-gray-800">data = sm.load_dataset(<span class="text-green-600">'clinical_trial.csv'</span>)</p>
+                                <br>
+                                <p class="text-gray-500"># Automated descriptive analysis</p>
+                                <p class="text-gray-800">report = sm.descriptive_analysis(data)</p>
+                                <p class="text-gray-800">report.show_histograms()</p>
+                                <p class="text-gray-800">report.outliers_detection()</p>
+                                <br>
+                                <p class="text-gray-500"># Advanced regression modeling</p>
+                                <p class="text-gray-800">model = sm.linear_regression(</p>
+                                <p class="text-gray-800 ml-4">predictors=[<span class="text-green-600">'age'</span>, <span class="text-green-600">'dose'</span>, <span class="text-green-600">'baseline'</span>],</p>
+                                <p class="text-gray-800 ml-4">outcome=<span class="text-green-600">'response'</span>,</p>
+                                <p class="text-gray-800 ml-4">diagnostics=<span class="text-blue-600">True</span></p>
+                                <p class="text-gray-800">)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Comprehensive Statistical Toolkit</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">StatisticalMaster provides everything you need for advanced statistical analysis in a single, intuitive package.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-bar text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Descriptive Analysis</h3>
+                    <p class="text-gray-600 mb-4">Automatically calculate measures of central tendency, dispersion, shape (skewness, kurtosis), and identify outliers using Tukey's method.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Histograms with fitted distributions</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Interactive boxplots</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Normality tests</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-vial text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Inferential Statistics</h3>
+                    <p class="text-gray-600 mb-4">Perform parametric and non-parametric hypothesis tests with comprehensive reporting and assumption checking.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> t-tests, ANOVA, Wilcoxon</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Chi-square tests</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Confidence intervals</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Power analysis</li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-project-diagram text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Advanced Modeling</h3>
+                    <p class="text-gray-600 mb-4">Build and diagnose sophisticated statistical models with automated reporting and visualization.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Multiple regression</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Logistic regression</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> ANCOVA</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Principal Component Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualization Showcase -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Interactive Visualizations</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Beautiful, publication-ready graphics with interactive exploration capabilities.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Dynamic Statistical Plots</h3>
+                    <p class="text-gray-600 mb-6">StatisticalMaster generates interactive visualizations using Plotly, allowing you to explore your data in depth. Hover over points for details, zoom into regions of interest, and customize the appearance.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-2 rounded-lg mr-4">
+                                <i class="fas fa-chart-pie text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Distribution Plots</h4>
+                                <p class="text-gray-600">Histograms with fitted probability distributions, Q-Q plots, and kernel density estimates.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-2 rounded-lg mr-4">
+                                <i class="fas fa-square-root-alt text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Regression Diagnostics</h4>
+                                <p class="text-gray-600">Residual plots, leverage plots, and partial regression plots with interactive elements.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-2 rounded-lg mr-4">
+                                <i class="fas fa-vector-square text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Multivariate Plots</h4>
+                                <p class="text-gray-600">Correlation heatmaps, PCA biplots, and cluster analysis visualizations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-4 shadow-lg">
+                    <div class="graph-placeholder rounded-lg overflow-hidden h-80 flex items-center justify-center">
+                        <div class="text-center p-6">
+                            <i class="fas fa-chart-line text-5xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-500 font-medium">Interactive Visualization Preview</p>
+                            <p class="text-gray-400 text-sm mt-2">Hover, zoom, and click on elements in actual implementation</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="text-sm text-gray-500">StatisticalMaster v1.0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Import Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Flexible Data Integration</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Import data from multiple sources with automatic type detection and cleaning.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="stat-card bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-file-csv text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">CSV & Excel</h3>
+                    <p class="text-gray-600">Import from flat files with automatic column type detection, missing value handling, and data validation.</p>
+                </div>
+                
+                <div class="stat-card bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-database text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SQL Databases</h3>
+                    <p class="text-gray-600">Connect directly to PostgreSQL, MySQL, SQLite and other databases with SQL query support.</p>
+                </div>
+                
+                <div class="stat-card bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-cloud text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Web APIs</h3>
+                    <p class="text-gray-600">Fetch data directly from REST APIs with JSON/XML parsing and authentication support.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-indigo-50 rounded-xl p-8 max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-3">Automated Data Cleaning</h3>
+                        <p class="text-gray-600 mb-4">StatisticalMaster includes intelligent data preprocessing:</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-center"><i class="fas fa-check text-indigo-500 mr-2"></i> Outlier detection and handling</li>
+                            <li class="flex items-center"><i class="fas fa-check text-indigo-500 mr-2"></i> Missing data imputation</li>
+                            <li class="flex items-center"><i class="fas fa-check text-indigo-500 mr-2"></i> Variable transformation</li>
+                            <li class="flex items-center"><i class="fas fa-check text-indigo-500 mr-2"></i> Multicollinearity detection</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="bg-gray-800 rounded-lg overflow-hidden">
+                            <div class="p-3 bg-gray-700 text-white text-sm font-mono flex justify-between items-center">
+                                <span>data_cleaning.py</span>
+                                <div class="flex space-x-1">
+                                    <div class="w-2 h-2 rounded-full bg-gray-500"></div>
+                                    <div class="w-2 h-2 rounded-full bg-gray-500"></div>
+                                    <div class="w-2 h-2 rounded-full bg-gray-500"></div>
+                                </div>
+                            </div>
+                            <div class="p-4 font-mono text-sm text-gray-200">
+                                <p><span class="text-purple-300">import</span> statistical_master <span class="text-purple-300">as</span> sm</p>
+                                <br>
+                                <p><span class="text-gray-400"># Load and clean data</span></p>
+                                <p>data = sm.load_data(<span class="text-green-300">'raw_data.csv'</span>,</p>
+                                <p class="ml-4">clean=<span class="text-blue-300">True</span>,</p>
+                                <p class="ml-4">impute=<span class="text-green-300">'median'</span>,</p>
+                                <p class="ml-4">outliers=<span class="text-green-300">'winsorize'</span>)</p>
+                                <br>
+                                <p><span class="text-gray-400"># Show cleaning report</span></p>
+                                <p>data.cleaning_report()</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reporting Section -->
+    <section id="documentation" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Automated Reporting</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Generate comprehensive reports in multiple formats with a single command.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden">
+                        <div class="bg-gray-200 p-3 flex items-center">
+                            <div class="flex space-x-2 mr-4">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <span class="text-sm font-medium">analysis_report.pdf</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="bg-white rounded-lg shadow-inner p-4 h-64 overflow-y-auto">
+                                <div class="animate-pulse-slow">
+                                    <div class="h-4 bg-gray-300 rounded mb-4 w-3/4"></div>
+                                    <div class="h-4 bg-gray-300 rounded mb-2 w-full"></div>
+                                    <div class="h-4 bg-gray-300 rounded mb-2 w-5/6"></div>
+                                    <div class="h-4 bg-gray-300 rounded mb-2 w-2/3"></div>
+                                    <div class="h-4 bg-gray-300 rounded mb-6 w-1/2"></div>
+                                    
+                                    <div class="h-4 bg-gray-300 rounded mb-4 w-3/4"></div>
+                                    <div class="h-4 bg-gray-300 rounded mb-2 w-full"></div>
+                                    <div class="h-4 bg-gray-300 rounded mb-2 w-5/6"></div>
+                                    
+                                    <div class="h-32 bg-gray-200 rounded mt-6 mb-4"></div>
+                                    
+                                    <div class="h-4 bg-gray-300 rounded mb-4 w-3/4"></div>
+                                    <div class="h-4 bg-gray-300 rounded mb-2 w-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2">
+                    <h3 class="text-2xl font-bold mb-4">Professional Output Formats</h3>
+                    <p class="text-gray-600 mb-6">StatisticalMaster can generate reports in multiple formats suitable for different audiences and purposes.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-file-pdf text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">PDF Reports</h4>
+                                <p class="text-gray-600">Beautifully formatted PDF documents with tables, figures, and interpretation suitable for publication.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-file-code text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">HTML Reports</h4>
+                                <p class="text-gray-600">Interactive HTML reports with expandable sections and embedded visualizations.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-file-excel text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Excel Workbooks</h4>
+                                <p class="text-gray-600">Comprehensive Excel files with raw results, formatted tables, and charts.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-indigo-50 rounded-lg p-6">
+                        <h4 class="font-bold mb-3">Example Report Generation</h4>
+                        <div class="bg-gray-800 rounded-lg p-4 text-sm font-mono text-gray-200">
+                            <p><span class="text-purple-300"># Generate comprehensive report</span></p>
+                            <p>report = sm.generate_report(</p>
+                            <p class="ml-4">analysis=my_analysis,</p>
+                            <p class="ml-4">format=<span class="text-green-300">'pdf'</span>,</p>
+                            <p class="ml-4">title=<span class="text-green-300">'Clinical Trial Results'</span>,</p>
+                            <p class="ml-4">author=<span class="text-green-300">'Research Team'</span></p>
+                            <p>)</p>
+                            <br>
+                            <p><span class="text-purple-300"># Save to file</span></p>
+                            <p>report.save(<span class="text-green-300">'trial_results.pdf'</span>)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLI Interface Section -->
+    <section id="examples" class="py-20 bg-gray-900 text-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Intuitive Command Line Interface</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Powerful statistical analysis through an easy-to-use menu-driven CLI.</p>
+            </div>
+            
+            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-2xl max-w-4xl mx-auto">
+                <div class="bg-gray-700 p-3 flex items-center">
+                    <div class="flex space-x-2 mr-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <span class="text-sm font-mono">terminal</span>
+                </div>
+                <div class="p-6 font-mono text-sm">
+                    <p class="text-green-400">$ python statistical_master.py</p>
+                    <br>
+                    <p class="text-blue-400">=============================================</p>
+                    <p class="text-blue-400">STATISTICALMASTER v1.0 - Advanced Analysis Tool</p>
+                    <p class="text-blue-400">=============================================</p>
+                    <br>
+                    <p>Main Menu:</p>
+                    <p class="ml-4 text-yellow-400">1)</span> Descriptive Statistics</p>
+                    <p class="ml-4 text-yellow-400">2)</span> Hypothesis Testing</p>
+                    <p class="ml-4 text-yellow-400">3)</span> Regression Modeling</p>
+                    <p class="ml-4 text-yellow-400">4)</span> Multivariate Analysis</p>
+                    <p class="ml-4 text-yellow-400">5)</span> Probability & Simulation</p>
+                    <p class="ml-4 text-yellow-400">6)</span> Data Visualization</p>
+                    <p class="ml-4 text-yellow-400">7)</span> Report Generation</p>
+                    <p class="ml-4 text-yellow-400">8)</span> Exit</p>
+                    <br>
+                    <p class="text-green-400">Select an option (1-8): <span class="text-white">2</span></p>
+                    <br>
+                    <p>Hypothesis Testing Menu:</p>
+                    <p class="ml-4 text-yellow-400">1)</span> t-tests (Independent, Paired)</p>
+                    <p class="ml-4 text-yellow-400">2)</span> ANOVA (One-way, Factorial)</p>
+                    <p class="ml-4 text-yellow-400">3)</span> Non-parametric Tests</p>
+                    <p class="ml-4 text-yellow-400">4)</span> Chi-square Tests</p>
+                    <p class="ml-4 text-yellow-400">5)</span> Power Analysis</p>
+                    <p class="ml-4 text-yellow-400">6)</span> Back to Main Menu</p>
+                    <br>
+                    <p class="text-green-400">Select an option (1-6): <span class="text-white">1</span></p>
+                    <br>
+                    <p>Select t-test type:</p>
+                    <p class="ml-4 text-yellow-400">1)</span> Independent samples t-test</p>
+                    <p class="ml-4 text-yellow-400">2)</span> Paired samples t-test</p>
+                    <p class="ml-4 text-yellow-400">3)</span> One-sample t-test</p>
+                    <br>
+                    <p class="text-green-400">Select an option (1-3): <span class="text-white">1</span></p>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-500 p-2 rounded-lg mr-4">
+                            <i class="fas fa-book text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Comprehensive Documentation</h3>
+                    </div>
+                    <p class="text-gray-300">Detailed documentation with examples for every function and method, including sample datasets to practice with.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-500 p-2 rounded-lg mr-4">
+                            <i class="fas fa-exclamation-triangle text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Assumption Checking</h3>
+                    </div>
+                    <p class="text-gray-300">Automatic validation of statistical assumptions with guidance on remedies when violations are detected.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-500 p-2 rounded-lg mr-4">
+                            <i class="fas fa-question-circle text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Context-Sensitive Help</h3>
+                    </div>
+                    <p class="text-gray-300">Get help at any point in the CLI interface by typing 'help' or '?' to see context-relevant guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Master Your Data?</h2>
+            <p class="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">Download StatisticalMaster today and transform your statistical analysis workflow.</p>
+            
+            <div class="bg-white bg-opacity-10 rounded-xl p-8 max-w-2xl mx-auto backdrop-filter backdrop-blur-sm">
+                <h3 class="text-2xl font-bold mb-6">Get StatisticalMaster</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white bg-opacity-20 rounded-lg p-6">
+                        <i class="fas fa-download text-4xl mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Install via pip</h4>
+                        <div class="bg-gray-900 rounded-lg p-3 font-mono text-sm text-left">
+                            <p class="text-green-400">pip install statistical-master</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-20 rounded-lg p-6">
+                        <i class="fab fa-github text-4xl mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Source from GitHub</h4>
+                        <div class="bg-gray-900 rounded-lg p-3 font-mono text-sm text-left">
+                            <p class="text-green-400">git clone https://github.com/statistical-master/core.git</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-indigo-700 bg-opacity-50 rounded-lg p-6 text-left">
+                    <h4 class="font-bold mb-3">System Requirements</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2 text-indigo-300"></i> Python 3.8 or higher</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2 text-indigo-300"></i> 4GB RAM minimum (8GB recommended)</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2 text-indigo-300"></i> 500MB disk space</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chart-line text-2xl mr-3 text-indigo-500"></i>
+                        <h3 class="text-xl font-bold text-white">StatisticalMaster</h3>
+                    </div>
+                    <p class="mb-4">Advanced statistical analysis toolkit for researchers, data scientists, and analysts.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-github text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-medium text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tutorials</a></li>
+                        <li><a href="#" class="hover:text-white transition">API Reference</a></li>
+                        <li><a href="#" class="hover:text-white transition">Sample Datasets</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Community</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">GitHub Discussions</a></li>
+                        <li><a href="#" class="hover:text-white transition">Stack Overflow</a></li>
+                        <li><a href="#" class="hover:text-white transition">User Forum</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contribution Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">License</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Use</a></li>
+                        <li><a href="#" class="hover:text-white transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p>&copy; 2023 StatisticalMaster. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle would go here in a real implementation
+<script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+## Cómo Usar
+
+1. **Extraer el ZIP**: Descomprime `statisticalmaster-template.zip` en una carpeta.
+
+2. **Mantén index.html intacto**: El `index.html` original ya vincula `css/styles.css` y `js/scripts.js`, así que no necesitas cambiarlo.
+
+3. **Previsualizar**: Abre `index.html` en un navegador moderno (Chrome, Firefox, Safari) con conexión a internet para los CDNs de Tailwind CSS y Font Awesome.
+
+4. **Probar Funcionalidades**:
+   - El desplazamiento suave (smooth scrolling) está manejado por el `<script>` interno en `index.html`.
+   - El toggle del menú móvil se añade vía `js/scripts.js`. Haz clic en el ícono de hamburguesa (`<button class="md:hidden">`) para mostrar/ocultar la navegación en pantallas pequeñas.
+
+## Mejoras Opcionales
+- **Imagen Placeholder**: Para usar `assets/images/placeholder.png` en lugar del fondo CSS en la sección de visualización, reemplaza manualmente:
+  ```html
+
+  <div class="graph-placeholder rounded-lg overflow-hidden h-80 flex items-center justify-center">
+
+con:
+
+<div class="rounded-lg overflow-hidden h-80 flex items-center justify-center">
+    <img src="assets/images/placeholder.png" alt="Vista previa de visualización interactiva" class="max-w-full max-h-full">
+</div>
+
+
+Favicon: Para añadir el favicon, inserta manualmente esta línea en el <head> de index.html:
+
+<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+
+CDNs Locales: Para evitar depender de internet para Tailwind CSS y Font Awesome:
+Descarga Tailwind CSS: https://tailwindcss.com/docs/installation
+Descarga Font Awesome: https://fontawesome.com/docs/web/setup/host-yourself
+Reemplaza los enlaces CDN en index.html con rutas locales.
+
+
+Licencia
+Licenciada para uso personal y comercial. No revendas ni redistribuyas sin permiso.
+
+Soporte
+Contacta a tareasumxweb@pm.me para preguntas o solicitudes de personalización.
+
+¡Feliz codificación!
